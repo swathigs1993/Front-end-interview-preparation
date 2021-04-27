@@ -5,6 +5,7 @@ https://www.javascripttutorial.net/javascript-dom/javascript-event-delegation/
 
 2> Explain how this works in JavaScript.
 Can you give an example of one of the ways that working with this has changed in ES6?
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 
 •	What is a closure, and how/why would you use one?
