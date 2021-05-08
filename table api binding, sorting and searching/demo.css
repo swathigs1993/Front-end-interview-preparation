@@ -1,0 +1,32 @@
+table {
+    border: 0.2em solid blue;
+    margin: 1em;
+  }
+  
+  table, th,td {
+    border: 2px solid blue;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  .table-container {
+      display: flex;
+  }
+  
+  .sort-button {
+      margin:1em;
+  }
+  
+  #myInput {
+    width: 50%; /* Full-width */
+    font-size: 1em; /* Increase font-size */
+    padding: 12px 20px 12px 10px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+    margin-left:40px;
+    margin-top: 0.9em
+  }
+  
+  

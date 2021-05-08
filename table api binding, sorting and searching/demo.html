@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+      <div class="row">
+        <div class="col-6">
+          <input
+            type="text"
+            id="myInput"
+            onkeyup="search()"
+            placeholder="Search for names.."
+          />
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="col-6">
+          <button class="sort-button" onclick="sortTable(2)">
+            Sort by Score
+          </button>
+        </div>
+      </div>
+
+    <div class="table-container">
+      <table id="gameTable" class="game-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Platform</th>
+            <th>Score</th>
+            <th>Genre</th>
+            <th>Editors choice</th>
+          </tr>
+        </thead>
+        <tbody id="gameTableData"></tbody>
+      </table>
+      <div class="alert alert-danger" id="no-rows-alert" style="display: none">No records found</div>
+    </div>
+    <script src="input.js"></script>
+  </body>
+</html>
