@@ -1,0 +1,10 @@
+<h1>
+  Contacts List
+</h1>
+<ul>
+  <li *ngFor="let contact of contactList">
+     {{contact.name}}
+  </li>
+</ul>
+
+<button (click)="ContactsServiceVar.showDirectlyOnHTML()">Call a function in service</button>
