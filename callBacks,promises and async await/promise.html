@@ -1,0 +1,109 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+ <body>
+     <script>
+         //Callbacks
+       let greetings = name => console.log(`Hello ${name}!`);
+       let userInfo = (firstName, lastName, callBack) => {
+           const fullName = `${firstName}${lastName}`;
+           callBack(fullName);
+       }
+       userInfo('Swathi','GS', greetings);
+
+       //Creating promise 
+
+       const hasMeeting = false;
+       const meeting = new Promise((resolve,reject) => {
+           if(!hasMeeting) {
+             const meetingDetails = {
+                 name: 'meeting1',
+                 location: 'location1',
+                 time: 'time1'
+             }
+             resolve(meetingDetails);
+           } else {
+            reject(new Error("Meeting already exist"));
+           }
+       });
+       meeting.then(res => {
+          console.log('new meeting created');
+          console.log(res); 
+       }).catch(err => {
+           console.log(err.message);
+       })
+
+       // Creating promise chain
+
+       const hasMeeting1 = false;
+       const meeting1 = new Promise((resolve,reject) => {
+           if(!hasMeeting1) {
+             const meetingDetails1 = {
+                 name: 'meeting1',
+                 location: 'location1',
+                 time: 'time1'
+             }
+             resolve(meetingDetails1);
+           } else {
+            reject(new Error("Meeting already exist"));
+           }
+       });
+
+       const addToCalender = meetingDetails1 => {
+           return new Promise((resolve,reject) => {
+               const calender = `Meeting ${meetingDetails1.name} is scheduled in ${meetingDetails1.location}
+               at ${meetingDetails1.time} :D`;
+               resolve(calender);
+           })
+       }
+       
+       meeting1.then(addToCalender)
+       .then(res => {
+          console.log('new meeting created');
+          console.log(res); 
+       }).catch(err => {
+           console.log(err.message);
+       })
+
+    // Async and await
+
+    async function myMeeting() {
+       const meetingDetails2 = await meeting1; //waits until meeting1 is completed
+       const message = await addToCalender(meetingDetails2);
+       console.log(message);
+    }
+
+    myMeeting();
+
+       // Executing 2 promises
+
+       const promise1 = Promise.resolve('Promise 1 complete');// if u wanna use only resolve in promise(Shortcut)
+       const promise2 = new Promise((res, rej) => {
+           setTimeout(()=> {
+             res('Promise 2 complete');
+           },2000)
+       });
+
+       promise1.then(ress1 => {
+           console.log(ress1);
+       });
+
+       promise2.then(ress2 => {
+           console.log(ress2);
+       });
+
+       
+       //Execute after both the result are obtained simultaniously
+       Promise.all([promise1,promise2]).then(res => {
+           console.log(res); // returns ["Promise 1 complete", "Promise 2 complete"]
+       }); 
+
+
+     </script>
+ </body>
+ </html>
