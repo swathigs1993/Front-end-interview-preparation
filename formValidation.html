@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up form</title>
+    <style>
+        input:invalid {
+         border: 2px dashed red;
+       }
+
+        input:invalid:required {
+           background-image: linear-gradient(to right, pink, lightgreen);
+          }
+
+       input:valid {
+         border: 2px solid black;
+        }
+    /* --------------------
+     Add your styling here
+     -------------------- */
+    </style>
+</head>
+<body>
+<div class="sign-up-form">
+    <!----------------------
+    Add your markup here
+    ------------------------>
+  <form method="post">
+    <div>
+    <label for="firstName"> First Name</label>
+    <input type="text" name="firstName" id="firstName"  Required/>
+   </div>
+   <div>
+     <label for="lastName"> Last Name</label>
+    <input type="text" name="lastName" id="lastName" Required/>
+</div>
+<div>
+     <label for="email"> Email</label>
+    <input type="email" name="email" id="email" Required/>
+    </div>
+    <div>
+     <label for="password"> password</label>
+    <input type="password" name="password" id="password" Required/>
+</div>
+<div>
+     <label for="password Confirmation"> Confirm Password</label>
+    <input type="password" name="passwordConfirm" Required id="passwordConfirm"/>
+</div>
+    <p id="message"></p>
+    <p id="totalErrorMsg"></p>
+    <input value="Submit" type="submit" id="submitBtn"/>
+  </form>
+</div>
+<script>
+    /* --------------------
+     Add your code here
+    --------------------- */
+
+   let messageText = document.getElementById("message");
+    
+   submitBtn.addEventListener('click', function(event) { 
+       validateForm();
+   })
+  
+  function validateForm() {
+    let messages = [];
+    let password = document.getElementById("password");
+    let passwordConfirm = document.getElementById("passwordConfirm");
+    let firstName = document.getElementById("firstName");
+    let lastName = document.getElementById("lastName");
+    let email = document.getElementById("email");
+    let totalErrorMsg = document.getElementById("totalErrorMsg");
+
+     if (firstName.checkValidity() && lastName.checkValidity() && email.checkValidity() && password.checkValidity()
+     && passwordConfirm.checkValidity()) {
+         if (password.value.toUpperCase() !== passwordConfirm.value.toUpperCase()) {
+            messages.push("password typed is not matching");  
+         } 
+
+         if (firstName.value.length < 6) {
+            messages.push("First name should be greater than 6 characters");
+         }
+
+         if (firstName.value.length > 15) {
+            messages.push("First name should be less than 15 characters");
+         }
+
+         event.preventDefault();
+         totalErrorMsg.textContent = messages.join(',');
+     } else {
+        event.preventDefault();
+        messages.push("Validation error!!!!");
+        messageText.innerHTML = "Validation error!!!!"; 
+     }
+
+     if (messages.length == 0) {
+        alert("you did it :)");
+        return true;
+     }
+     
+  }
+  
+</script>
+</body>
+</html>
