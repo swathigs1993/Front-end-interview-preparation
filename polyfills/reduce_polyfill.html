@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        Array.prototype.sampleReduce = function(callback, initialVal) {
+          let acc = initialVal || 0;
+           for(let i = 0; i < this.length; i++) {
+             acc = callback(acc, this[i], i, this);
+           }
+           return acc;
+        }
+     //Example 1
+        let arr1 = [3,4,5,6,7,8];
+       let sum = arr1.sampleReduce((acc,curr) => { 
+            return acc + curr;
+       },0);
+       console.log(sum);
+
+       //Example 2
+       const nums = [1, 2, 3, 4, 5]
+const double = nums.newReduce((accum, current) => {
+  accum.push(current * 2)
+  return accum
+}, []);
+console.log(double);
+
+// Example 3
+    const queryString = "cat=meow&duck=quack&dog=woof";
+const queryObject = queryString.split("&").sampleReduce((accum, current) => {
+  const splitString = current.split("=")
+  accum[splitString[0]] = splitString[1];
+  return accum;
+}, {})
+console.log(queryObject);
+    </script>
+</body>
+</html>

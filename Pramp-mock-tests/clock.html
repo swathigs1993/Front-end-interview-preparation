@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hand Clock</title>
+    <style>
+        /* Add your CSS here */
+    .circle {
+        position: relative;
+        border: solid green;
+        height: 400px;
+        width: 400px;
+        border-radius: 100%;
+      }
+      
+      .hand {
+        position: absolute;
+        border: solid black;
+        top: 50%;
+        left: 50%;
+        transform-origin: 0%;
+      }
+      
+      .hour {
+        height: 5px;
+        width: 35%;
+        background: black;
+        transform: rotate(270deg);
+      }
+      
+      .minuit {
+        height: 5px;
+        width: 40%;
+        background: black;
+        transform: rotate(270deg);
+      }
+      
+      .sec {
+        height: 5px;
+        width: 45%;
+        background: red;
+        transform: rotate(270deg);
+      }
+    </style>
+</head>
+<body onload="initialise()">
+  <div id="circle" class="circle">
+    <div class="hand hour" id="hour"> </div>
+    <div class="hand minuit" id="minuit"> </div>
+    <div class="hand sec" id="sec"> </div>
+  </div>
+  
+<script>
+    // Add your JavaScript code here
+    let hour = document.getElementById("hour");
+    let minuit = document.getElementById("minuit");
+    let sec = document.getElementById("sec");
+    function initialise() {
+        let that = this;
+        let secVal = 0;
+        let minVal = 0;
+        let hourVal = 0;
+        setInterval(function() {
+            secVal++;
+            sec.style.transform = 'rotate('+ (270 + (secVal * 6)) + 'deg)';
+          if(secVal > 60) {
+            minVal++;
+            secVal = 0;
+            minuit.style.transform = 'rotate('+ (270 + (minVal * 6)) + 'deg)';
+          }
+          if(minVal > 60) {
+            hourVal++;
+            minVal = 0;
+            hour.style.transform = 'rotate('+ (270 +(hourVal * 6)) + 'deg)';
+          }
+          if(hourVal > 60) {
+            hourVal = 0;
+            hour.style.transform = 'rotate('+ (270 + hourVal) + 'deg)';
+          }
+          console.log(secVal);
+          console.log(minVal);
+          console.log(hourVal);
+        },1000);
+    }
+</script>
+</body>
+</html>
+
+  
