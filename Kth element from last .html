@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .wrapper {
+  display: flex;
+  height: 50px;
+  line-height: 50px;
+}
+
+.link {
+  width: 50px;
+  text-align: center;
+  border-radius: 10px;
+  border: solid black thin;
+}
+</style>
+<body>
+    
+    <div class='wrapper'>
+        <div class='link'>0</div>⟹
+        <div class='link'>1</div>⟹
+        <div class='link'>2</div>⟹
+        <div class='link'>3</div>⟹
+        <div class='link'>4</div>⟹
+        <div class='link'>5</div>⟹
+        <div class='link'>6</div>⟹
+        <div class='link'>7</div>⟹
+        <div class='link'>8</div>⟹
+        <div class='link'>9</div>
+      </div>
+
+      <script>
+         
+        let head = document.querySelector('.link');
+        fromLast(head, 3);
+
+        //The Element.nextElementSibling read-only property returns the element immediately 
+        //following the specified one in its parent's children list, or null if the specified element is the last one in the list.
+
+        // take 2 pointers and point it to head. Move first pointer to the kth position and then start moving next pointer till first 
+        //pointer reach null position.
+        function fromLast(head, k) {
+          let first = head;
+          let next = head;
+          while (first.nextElementSibling !== null) {
+            if(k > 1) { 
+              k--; 
+            } else {
+              next = next.nextElementSibling;
+            }
+            first = first.nextElementSibling;
+          }
+
+          if(k == 1) {
+                next.style.background = "red";
+            } 
+        }
+      </script>
+</body>
+</html>
