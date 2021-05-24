@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let arr = ["Tom","Harry","Tom","Tom","Tom","Jen"];
+console.log(returnMax(arr));
+function returnMax(arr) {
+   let nameMap = new Map();
+ for(let i = 0; i < arr.length;i++) {
+   if(nameMap.has(arr[i])) {
+      let count = nameMap.get(arr[i]);
+      count++;
+      nameMap.set(arr[i],count);
+   } else {
+       nameMap.set(arr[i], 1);
+   }
+}
+
+let largest = nameMap.get(arr[0]);
+let largestVal = arr[0];
+let res = [];
+nameMap.forEach(function(key,val) {
+    if(val > largest) {
+      largest = nameMap.get(arr[i]);
+      largestVal = key;
+    }
+});
+  res.push(largestVal);
+  res.push(largest);
+  return res;
+}
+    </script>
+</body>
+</html>

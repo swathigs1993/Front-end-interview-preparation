@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <button onclick="startTimer()"> Start</button>
+    <button onclick="stopTimer()"> stop </button>
+    <input id="displayTime"/>
+</head>
+<body>
+    
+    <script>
+        let timeDOM = document.getElementById("displayTime");
+        let count = 0;
+        let timer;
+        function startTimer() {
+                timer = setInterval(function() {
+                timeDOM.value = ++count;
+            },1000)
+        }
+
+        function stopTimer() {
+            count = 0;
+            timeDOM.value = count;
+            clearInterval(timer);
+        }
+    </script>
+</body>
+</html>
