@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Emitter</title>
+</head>
+<body>
+<script>
+    // https://www.youtube.com/watch?v=X-AhceP6jpA
+// Add your implementation here, and initialize eventEmitter with an actual value;
+
+//First think what Data structure can be used.
+// For events you will use object. Key is event name and value is array of subscribed events.
+// This is like pub sub model
+//Its very easy try to understand on and emit first then remove and then once.
+
+class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+  
+  // on is like subscribe
+  on(eventName, callBack) {
+     if(this.events[eventName]) {
+          this.events[eventName].push(callBack);
+        } else {
+         this.events[eventName] = [];
+         this.events[eventName].push(callBack);
+        }
+  }
+  // emit is like trigger
+  emit(eventName, ...rest) {
+    if(this.events[eventName]) {
+     this.events[eventName].forEach(cb => {
+       cb.apply(this, rest);
+     })
+    }
+  }
+
+  off(eventName, callBack) {
+     if(this.events[eventName]) {
+       this.events[eventName].splice(this.events[eventName].indexOf(callBack));
+     }
+  }
+
+  //Using EventEmitter.on(), you attach a full listener, versus when you use EventEmitter.once(),
+  // it is a one time listener that will detach after firing once.
+  //https://gist.github.com/mudge/5830382#file-eventemitter-js
+  once(eventName, callBack) {
+     this.on(eventName, function g() {  // g function will be pushed to array in on function
+                                       // It will be executed wen emit is called.
+         this.off(eventName, g);
+         callBack.apply(this,arguments);
+     })
+  }
+}
+  
+var eventEmitter = new EventEmitter();
+
+function responseToEvent(msg) {
+    console.log(msg);
+}
+
+eventEmitter.on('pramp', responseToEvent);
+eventEmitter.once('pramp', function(msg) { console.log(msg + ' just once!'); });
+eventEmitter.emit('pramp', '1st');
+eventEmitter.emit('pramp', '2nd');
+eventEmitter.off('pramp', responseToEvent);
+eventEmitter.emit('pramp', '3rd');
+eventEmitter.emit('pramp', '1st');
+  
+</script>
+</body>
+</html>
