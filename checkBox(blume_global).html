@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .continer {
+            display: flex;
+        }
+        .fruit {
+           display: flex;
+           flex-direction: column;
+           flex: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <div class="continer">
+    <div id="fruits" class="fruit">
+    <div>
+    <label for="apple">apple</label>
+    <input type="checkbox" value="apple" name="apple">
+    </div>
+    <div>
+    <label for="Mango">Mango</label>
+    <input type="checkbox" value="Mango"  name="Mango">
+    </div>
+    <div>
+    <label for="Grape">Grape</label>
+    <input type="checkbox" value="Grape"  name="Grape">
+    </div>
+    <div>
+    <label for="Berry">Berry</label>
+    <input type="checkbox" value="Berry"  name="Berry">
+    </div>
+    <div>
+    <label for="Orange">Orange</label>
+    <input type="checkbox" value="Orange"  name="Orange">
+    </div>
+   
+   </div>
+   <div class="display-box">
+    <span id="displayFruit"> </span>
+ </div>
+</div>
+</body>
+<script>
+  let fruitList = document.getElementById("fruits");
+  let fruitDisplay = document.getElementById("displayFruit");
+  let inputs = document.getElementsByTagName("input");
+  let arr = [];
+
+  initialise();
+  function initialise() {
+  for(let i = 0; i < inputs.length; i++) {
+   inputs[i].addEventListener("click",function(event) {
+    fruitDisplay.innerHTML = '';
+      if(event.target.checked) {
+         arr.push(event.target.value);
+      } else {
+         arr.splice(arr.indexOf(event.target.value),1); 
+      }
+
+      for(let i = 0; i < arr.length; i++) {
+        fruitDisplay.innerHTML =  fruitDisplay.innerHTML.concat(arr[i]) ;
+      }
+  });
+}
+}
+</script>
+
+</html>
