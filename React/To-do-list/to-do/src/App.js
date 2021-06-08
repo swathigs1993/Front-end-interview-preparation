@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import ToDoList from './ToDoList';
+import CheckBox from './CheckBox';
+
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
 function App() {
@@ -22,7 +24,6 @@ function App() {
     selected.completed = !selected.completed;
     setToDo(newToDos);
   }
-
 
   function handleOnToDo() {
     const name = toDoInputRef.current.value;
@@ -47,6 +48,9 @@ function App() {
     <button onClick={handleOnToDo}>Add To Do</button>
     <button onClick={handleClearToDo}>Clear To Dos</button>
     <div>{todos.filter(todo => !todo.completed ).length} items left</div>
+
+
+    <CheckBox/>
     </>
   );
 }
