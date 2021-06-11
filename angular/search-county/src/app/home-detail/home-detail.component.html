@@ -1,0 +1,39 @@
+
+
+<div class="container">
+  <div class="flag">
+    <div style="margin-bottom: 5em; margin-top: 5em;">
+<button pButton type="button" label="Back" (click)="navigateBack()" ></button>
+</div>
+<img style="max-height:20em; min-height:20em" src={{selectedCountry.flag}}>
+</div>
+
+<div class="con-detail-div">
+  <div>
+  <p class="heading">{{selectedCountry.name}} </p>
+  
+    <label class="font-bold">Native Name:</label><span>{{selectedCountry.nativeName}}</span><br>
+    <label class="font-bold">Population:</label><span>{{selectedCountry.population}}</span><br>
+    <label class="font-bold">Region:</label><span>{{selectedCountry.region}}</span><br>
+    <label class="font-bold">Sub Region:</label><span>{{selectedCountry.subregion}}</span><br>
+    <label class="font-bold">Capital:</label><span>{{selectedCountry.capital}}</span>
+  </div>
+    <div style="margin-top: 1em; margin-left: 1em;">
+      <label class="font-bold">Top Level Domain:</label><span>{{selectedCountry.topLevelDomain[0]}}</span><br>
+      
+      <label class="font-bold">Currencies:</label><span *ngFor="let cur of selectedCountry.currencies"><span>{{cur.name}},</span></span><br>
+      <label class="font-bold">Languages:</label><span *ngFor="let sel of selectedCountry.languages"><span>{{sel.name}},</span></span>
+      </div>
+</div>
+</div>
+<div style="display: flex;">
+  <div style="flex: 50%;"></div>
+  <div style="flex: 43%;">
+  <label class="font-bold">Border Countries: </label>
+  <span *ngFor="let border of selectedCountry.borders"> 
+    <button pButton type="button" label={{border}} (click)="navigateToCountry(border)" ></button>
+  </span>
+</div>
+</div>
+
+

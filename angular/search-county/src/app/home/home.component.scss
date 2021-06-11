@@ -1,0 +1,29 @@
+
+
+.img-flag {
+    width:100%;
+    max-height: 10em;
+    min-height: 10em;
+}
+
+::ng-deep.ui-card-body {
+    padding: 0 !important;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.country-heading {
+    font-size: 1.3em;
+}
+
+::ng-deep.ui-dataview .ui-dataview-header {
+    display: none;
+  }
+
+  .header {
+      margin: 2em;
+      display: flex;
+      justify-content: space-between;
+  }

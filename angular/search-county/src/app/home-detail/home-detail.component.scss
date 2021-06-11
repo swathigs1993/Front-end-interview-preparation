@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.flag {
+    //text-align: center;
+   // width: 50%;
+   padding-right: 3em;
+}
+
+.con-detail-div {
+    display: flex;
+   // justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+   // width: 50%;
+}
+
+.ui-widget-header .ui-button, .ui-widget-content .ui-button, .ui-widget.ui-button, .ui-button {
+    border: 1px solid grey;
+    color: black;
+    background: #FFFFFF;
+}
+
+.heading {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.font-bold {
+    font-weight: bold;
+}

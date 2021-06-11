@@ -1,0 +1,35 @@
+
+
+<div class="header">
+  <input type="search" pInputText placeholder="Search for a country..." (input)="dv.filter($event.target.value)">
+
+  <p-dropdown [options]="cities" optionLabel="region" placeholder="Filter By Region" (onChange)="onRegionChange($event.value)"></p-dropdown>
+</div>
+  <p-dataView #dv [value]="countryListCopy" filterBy="name"
+       layout="grid" [paginator]="true" [rows]="12">
+
+       <!-- <ng-template pTemplate="header">
+        <input type="search" pInputText placeholder="Search by brand" (input)="dv.filter($event.target.value)">
+    </ng-template> -->
+    
+    <ng-template pTemplate="header"><input type="search" pInputText placeholder="Search by brand" (input)="dv.filter($event.target.value)"></ng-template>
+  
+  <ng-template let-country pTemplate="gridItem">
+    
+    <div (click)="navigateToDetail(country)">
+      <p-card header="header" [style]="{'width': '18rem', 'margin': '4em'}">
+
+        <img class="img-flag"  src={{country.flag}}>
+        <div style="padding: 1em;">
+        <span class="bold-text country-heading">{{country.name}} </span>
+        <p><label class="bold-text">Population:</label>{{country.population}}</p>
+        <p><label class="bold-text">Region:</label>{{country.region}}</p>
+        <p><label class="bold-text">Capital:</label>{{country.capital}}</p>
+      </div>
+
+    </p-card>
+    </div>
+</ng-template>
+<ng-template pTemplate="footer">Choose from the list.</ng-template>
+</p-dataView>
+>
